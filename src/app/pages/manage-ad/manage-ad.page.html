@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="addAdd()">Add Ads</ion-button>
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-button routerLink="/home">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+    <ion-title>manage-ad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-item *ngFor="let ad of ads">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{ ad.name }}</ion-card-title>
+              <ion-card-subtitle>{{ ad.price | currency:'USD' }}</ion-card-subtitle>
+              <ion-card-subtitle>{{ ad.description }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-img [src]="ad.pictureUrl"></ion-img>
+              <button (click)="deleteAd(ad.$key)">Delete</button>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
